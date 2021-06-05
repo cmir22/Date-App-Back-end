@@ -13,4 +13,8 @@ router.post("/save-proyect", ProyectController.saveProyect);
 
 router.get("/proyect/:id?", ProyectController.getProyect);
 
+router.get("/proyects", ProyectController.getProyects);
+
+router.put("/proyect/:id", ProyectController.updateProyect);
+
 module.exports = router;

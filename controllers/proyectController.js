@@ -38,13 +38,44 @@ var controller = {
     if (projectId == null)
       return res.status(404).send({ message: "Proyect do not exist" });
 
-    Proyect.findById(projectId, (err, proyect) => {
+    Proyect.findById(projectId, (err, proyects) => {
       if (err) return res.status(500).send({ message: "Error" });
-      if (!proyect)
+      if (!proyects)
         return res.status(404).send({ message: "Proyect do not exist" });
 
-      return res.status(200).send({ proyect });
+      return res.status(200).send({ proyects });
     });
+  },
+
+  getProyects: function (req, res) {
+    Proyect.find({}).exec((err, proyects) => {
+      if (err) return res.status(500).send({ message: "Error to get data" });
+
+      if (!proyects)
+        return res.status(404).send({ message: "No finded Proyects" });
+
+      return res.status(200).send({ proyects });
+    });
+  },
+
+  updateProyect: function (req, res) {
+    const options = { new: true };
+    var proyectId = req.params.id;
+    var update = res.body;
+
+    Proyect.findOneAndUpdate(
+      proyectId,
+      update,
+      options,
+      (err, proyectUpdated) => {
+        if (err)
+          return res.status(500).send({ message: "Error to update file" });
+        if (!proyectUpdated)
+          return res.status(404).send({ message: "Do not exist proyect" });
+
+        return res.status(200).send({ proyect: proyectUpdated });
+      }
+    );
   },
 };
 

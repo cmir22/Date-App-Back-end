@@ -72,7 +72,6 @@ var controller = {
           return res.status(500).send({ message: "Error to update file" });
         if (!proyectUpdated)
           return res.status(404).send({ message: "Do not exist proyect" });
-
         return res.status(200).send({ proyect: proyectUpdated });
       }
     );

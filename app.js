@@ -7,6 +7,7 @@ var app = express();
 
 // Config Routes
 var proyect_routes = require("./routes/proyectRoutes");
+var user_routes = require("./routes/userRoutes");
 
 // Middelwares
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 
 // Routes
 app.use("/api", proyect_routes);
+app.use("/api/user", user_routes);
 
 // Export Module
 module.exports = app;

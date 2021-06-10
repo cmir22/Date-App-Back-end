@@ -5,6 +5,6 @@ var UserController = require("../controllers/userController");
 
 var router = express.Router();
 
-router.get("/create", UserController.create);
+router.post("/create", UserController.create);
 
 module.exports = router;

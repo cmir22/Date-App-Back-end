@@ -9,8 +9,6 @@ var ProfileSchema = new Schema({
   genere: String,
   like: String,
   description: String,
-  //   img: null,
-  //   profile_img: null,
   user_id: String,
 });
 

@@ -29,6 +29,18 @@ var controller = {
       };
     // res.status(200).send({ message: "Ready to remove elements" });
   },
+  login: function (req, res) {
+    var user = new User();
+    var params = req.body;
+    user.username = params.username;
+    user.password = params.password;
+
+    user.find({ username: user.username }),
+      function (err, docs) {
+        if (err) res.send(err);
+        else res.send(docs);
+      };
+  },
 };
 
 module.exports = controller;
